@@ -1,0 +1,5 @@
+{
+  "name": "Logistic Regression Master",
+  "description": "An interactive cheat sheet for Logistic Regression featuring visual concept pipelines, interactive graphs for Sigmoid and Loss functions, mathematical derivation guides, and a fully functional in-browser Python playground using Pyodide.",
+  "requestFramePermissions": []
+}
