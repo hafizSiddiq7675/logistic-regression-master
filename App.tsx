@@ -4,6 +4,7 @@ import SigmoidGraph from './components/SigmoidGraph';
 import LossVisualizer from './components/LossVisualizer';
 import MathNumpyTable from './components/MathNumpyTable';
 import PythonPlayground from './components/PythonPlayground';
+import SklearnPlayground from './components/SklearnPlayground';
 import FloatingModal from './components/FloatingModal';
 import MathBlock from './components/MathBlock';
 
@@ -184,6 +185,115 @@ const App: React.FC = () => {
           </p>
           <PythonPlayground />
         </Section>
+
+        {/* Section 10: sklearn Workflow */}
+        <div className="bg-gradient-to-b from-slate-50 to-blue-50 dark:from-[#0b1120] dark:to-[#0a1628]">
+          <Section title="Using Built-in Functions (sklearn)" id="sklearn">
+            <div className="mb-6">
+              <p className="text-slate-600 dark:text-slate-400 mb-4">
+                Now let's use scikit-learn (sklearn) library with its built-in functions. This demonstrates the real-world workflow for machine learning:
+              </p>
+
+              {/* Workflow Steps */}
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                <div className="bg-white dark:bg-slate-800 p-4 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm">
+                  <div className="text-2xl font-bold text-blue-500 mb-2">1</div>
+                  <h4 className="font-semibold text-slate-800 dark:text-slate-200 mb-1">Import & Load</h4>
+                  <p className="text-xs text-slate-500">pandas, StandardScaler, train_test_split, LogisticRegression</p>
+                </div>
+                <div className="bg-white dark:bg-slate-800 p-4 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm">
+                  <div className="text-2xl font-bold text-green-500 mb-2">2</div>
+                  <h4 className="font-semibold text-slate-800 dark:text-slate-200 mb-1">Preprocess</h4>
+                  <p className="text-xs text-slate-500">StandardScaler to normalize features</p>
+                </div>
+                <div className="bg-white dark:bg-slate-800 p-4 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm">
+                  <div className="text-2xl font-bold text-amber-500 mb-2">3</div>
+                  <h4 className="font-semibold text-slate-800 dark:text-slate-200 mb-1">Split Data</h4>
+                  <p className="text-xs text-slate-500">80% training, 20% testing</p>
+                </div>
+                <div className="bg-white dark:bg-slate-800 p-4 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm">
+                  <div className="text-2xl font-bold text-purple-500 mb-2">4</div>
+                  <h4 className="font-semibold text-slate-800 dark:text-slate-200 mb-1">Train & Predict</h4>
+                  <p className="text-xs text-slate-500">classifier.fit() and classifier.predict()</p>
+                </div>
+              </div>
+
+              {/* PIMA Dataset Info */}
+              <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 p-4 rounded-lg mb-6">
+                <h4 className="font-bold text-amber-700 dark:text-amber-400 mb-2">PIMA Diabetes Dataset</h4>
+                <p className="text-sm text-slate-700 dark:text-slate-300 mb-2">
+                  A classic dataset with 768 samples and 8 features:
+                </p>
+                <div className="flex flex-wrap gap-2 text-xs">
+                  <span className="bg-amber-100 dark:bg-amber-800/40 px-2 py-1 rounded">Pregnancies</span>
+                  <span className="bg-amber-100 dark:bg-amber-800/40 px-2 py-1 rounded">Glucose</span>
+                  <span className="bg-amber-100 dark:bg-amber-800/40 px-2 py-1 rounded">BloodPressure</span>
+                  <span className="bg-amber-100 dark:bg-amber-800/40 px-2 py-1 rounded">SkinThickness</span>
+                  <span className="bg-amber-100 dark:bg-amber-800/40 px-2 py-1 rounded">Insulin</span>
+                  <span className="bg-amber-100 dark:bg-amber-800/40 px-2 py-1 rounded">BMI</span>
+                  <span className="bg-amber-100 dark:bg-amber-800/40 px-2 py-1 rounded">DiabetesPedigreeFunction</span>
+                  <span className="bg-amber-100 dark:bg-amber-800/40 px-2 py-1 rounded">Age</span>
+                </div>
+                <p className="text-xs text-slate-500 mt-2">
+                  <strong>Target:</strong> Outcome (0 = Non-Diabetic, 1 = Diabetic)
+                </p>
+              </div>
+
+              {/* Key sklearn Functions */}
+              <div className="grid md:grid-cols-2 gap-4 mb-6">
+                <div className="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
+                  <h4 className="font-bold text-cyan-600 dark:text-cyan-400 mb-3">Key sklearn Functions</h4>
+                  <div className="space-y-2 text-sm font-mono">
+                    <div className="bg-slate-100 dark:bg-slate-800 p-2 rounded">
+                      <code className="text-purple-600 dark:text-purple-400">StandardScaler()</code>
+                      <p className="text-xs text-slate-500 mt-1">Normalizes features to mean=0, std=1</p>
+                    </div>
+                    <div className="bg-slate-100 dark:bg-slate-800 p-2 rounded">
+                      <code className="text-purple-600 dark:text-purple-400">train_test_split(X, y, test_size=0.2)</code>
+                      <p className="text-xs text-slate-500 mt-1">Splits data into train/test sets</p>
+                    </div>
+                    <div className="bg-slate-100 dark:bg-slate-800 p-2 rounded">
+                      <code className="text-purple-600 dark:text-purple-400">LogisticRegression().fit(X, y)</code>
+                      <p className="text-xs text-slate-500 mt-1">Trains the model</p>
+                    </div>
+                    <div className="bg-slate-100 dark:bg-slate-800 p-2 rounded">
+                      <code className="text-purple-600 dark:text-purple-400">accuracy_score(y_true, y_pred)</code>
+                      <p className="text-xs text-slate-500 mt-1">Calculates prediction accuracy</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800">
+                  <h4 className="font-bold text-green-600 dark:text-green-400 mb-3">Predictive System Flow</h4>
+                  <div className="space-y-3 text-sm">
+                    <div className="flex items-center gap-2">
+                      <span className="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs font-bold">1</span>
+                      <span>Input raw data tuple</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs font-bold">2</span>
+                      <span>Convert to numpy array</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs font-bold">3</span>
+                      <span>Reshape for single prediction</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs font-bold">4</span>
+                      <span>Standardize using fitted scaler</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold">5</span>
+                      <span>Get prediction (0 or 1)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <SklearnPlayground />
+          </Section>
+        </div>
       </main>
 
       <footer className="bg-slate-100 dark:bg-slate-900 py-8 text-center text-slate-500 text-sm">
